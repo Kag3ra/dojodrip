@@ -13,18 +13,86 @@
 
     <p>How's your wardrobe looking?</p>
     <div class="form-container">
-    <form id="form">
       <ul>
-        <li><label for="type">Type:</label></li>
-        <input type="text" id="type" name="type" />
-        <li><label for="color">Color:</label></li>
-        <input type="text" id="color" name="color" />
-        <button type="submit">Add</button>
+        <br />
+
+        <label>Color</label>
+        <select name="Namee" id="ok"></select>
+
+        <br />
+        <br />
+
+        <label>Type</label>
+        <select name="Namee" id="tt"></select>
+
+        <br />
+        <br />
+
+        <button id="genereate" onclick="shout()">Suprise me 🎉</button>
+
+        <br />
+        <br />
       </ul>
-    </form>
     </div>
+
     <h2>Clothing Catalogue</h2>
     <div id="catalogue"></div>
     <script src="rags.js"></script>
   </body>
+
+  <script>
+    let colors = ["Red", "Green", "Blue"];
+    let typez = [
+      "Jackets",
+      "Pants",
+      "Shoes",
+      "Tees",
+      "Shirts",
+      "Headwear",
+      "Shorts",
+      "Socks",
+      "Bags",
+    ];
+
+    // TODO 😎 Boss you will fill out
+    let outfitPairs = {
+      RedJackets: ["Burbey", "Test"],
+      RedPants: ["Khaki", "Track"],
+      RedShoes: ["Khaki", "Track"],
+    };
+
+    function seedColorsDropdown() {
+      let ok = document.getElementById("ok");
+
+      for (color of colors) {
+        ok.innerHTML += `<option value="${color}">${color}</option>`;
+      }
+    }
+
+    function seedType() {
+      let typeSection = document.getElementById("tt");
+
+      for (type of typez) {
+        typeSection.innerHTML += `<option>${type}</option>`;
+      }
+    }
+
+    // Add a submit event listener to the form
+    function shout() {
+      // Clear the form input values
+      let color = document.getElementById("ok").value;
+      let type = document.getElementById("tt").value;
+      let catalogue = document.getElementById("catalogue")
+
+      let outFits = outfitPairs[color + type];
+
+      // Update the catalogue
+      catalogue.innerHTML += `
+          <p>Picked Outfits 😏 : ${outFits.join(", ")}</p>
+        `;
+    }
+
+    seedColorsDropdown();
+    seedType();
+  </script>
 </html>
